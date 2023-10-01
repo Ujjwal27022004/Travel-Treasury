@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Treasury</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="loader.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap" rel="stylesheet">
+
+
+
+  <script src="https://kit.fontawesome.com/71865644cf.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div id="wrap"></div>
+  
+  <div id="main-content" class="blur-content">
+    <!-- ---navbar---- -->
+    <header id="navbar">
+      <nav class="navbar-container container">
+        <a href="/" class="home-link">
+          <div class="navbar-logo">
+            <img class="TT" src="TT.png">
+          </div>
+        </a>
+        <button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu"
+          aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div id="navbar-menu" aria-labelledby="navbar-toggle">
+          <ul class="navbar-links">
+            <li class="navbar-item"><a class="navbar-link" href="/">Home</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/blog">Budget</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/careers">Class</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/contact_us.html">Contact</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/about.html">About us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+    <!-- <container class="tag">
+        <p>TRAVEL TREASURY</p>
+      </container> -->
+
+
+
+    <!-- ------------------Animation -->
+    <div class="area">
+
+      <ul class="circles">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>0</li>
+      </ul>
+
+      <div class="home-content">
+
+        <div class="tag1">
+          <p>TRAVEL TREASURY</p>
+        </div>
+        <div class="tag2">
+          <p>Your Ultimate Companion for Budgeting Your Travel Expenses</p>
+        </div>
+        <div id="features"> Features : </div>
+
+        <div>
+          <button id="login" type="button" onclick="toggleLoginForm()">Log In</button>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+    <div>
+      <p id="headline">Key Features</p>
+      <div class="grid-container">
+        <div class="box">
+          <div>
+            <img class="feature-img" src="feature1.jpg" alt="no preview">
+          </div>
+          <div class="descrip">
+            <p class="feature-tag">Budget Planning</p>
+            <p class="descrip">Budget planning involves outlining anticipated income, allocating expenses, and
+              structuring
+              financial goals to optimize</p>
+          </div>
+
+        </div>
+        <div class="box">
+          <div>
+            <img class="feature-img" src="feature2.jpg" alt="no preview">
+          </div>
+          <div>
+            <p class="feature-tag">Record Keeping</p>
+            <p class="descrip">Efficiently record and organize all essential information, ensuring a complete
+              and detailed
+              repository of records.</p>
+          </div>
+        </div>
+        <div class="box">
+          <div>
+            <img class="feature-img" src="feature3.jpg" alt="no preview">
+          </div>
+          <div>
+            <p class="feature-tag">Expense Tracking</p>
+            <p class="descrip">Budget tracking entails monitoring and recording expenses against the allocated
+              budget to ensure
+              financial adherence</p>
+          </div>
+        </div>
+        <!-- Add more boxes as needed -->
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- -----------------footer----------------- -->
+
+    <footer id="contact">
+      <div class="row">
+        <div class="col">
+          <p class="logo2">Travel Treasury</p>
+          <br />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+            perspiciatis, ad similique neque maxime aut. Quas libero nesciunt
+            similique et nemo inventore fugiat harum odit, dolor impedit omnis,
+            adipisci doloribus.
+          </p>
+        </div>
+
+        <div class="col">
+          <h3>
+            Address
+            <div class="underline"><span></span></div>
+          </h3>
+          <p>Ravideep Row House No.2,</p>
+          <p>Vrindavan Nagar, Nashik,</p>
+          <p>Maharashtra, PIN: 422010, India</p>
+          <p class="email-id">ujjwalpatil63@gmail.com</p>
+          <h4>+91-7709706731</h4>
+        </div>
+        <div class="col">
+          <h3>
+            Links
+            <div class="underline"><span></span></div>
+          </h3>
+
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Budget</a></li>
+            <li><a href="">Class</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">About us</a></li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>
+            Social
+            <div class="underline"><span></span></div>
+          </h3>
+          <div class="social-icons">
+            <a href="" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <!-- <i class="fa-brands fa-pi"></i> -->
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <about>
+
+    </about>
+  </div>
+  <!-- ----------------------------------login form-------------------------------------------- -->
+  <loginform>
+    <section class="forms-section">
+      <h1 class="section-title"> Forms</h1>
+      <div class="forms">
+        <div class="form-wrapper is-active">
+          <button type="button" class="switcher switcher-login">
+            Login
+            <span class="underline"></span>
+          </button>
+
+          <button class="close-btn" onclick="closeLoginForm()">Close</button>
+
+          
+          <form class="form form-login">
+            <fieldset>
+              <legend>Please, enter your email and password for login.</legend>
+              <div class="input-block">
+                <label for="login-email">E-mail</label>
+                <input id="login-email" type="email" required>
+              </div>
+              <div class="input-block">
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" required>
+              </div>
+            </fieldset>
+            <button type="submit" class="btn-login">Login</button>
+          </form>
+        </div>
+        <div class="form-wrapper">
+          <button type="button" class="switcher switcher-signup">
+            Sign Up
+            <span class="underline"></span>
+          </button>
+          <form class="form form-signup">
+            <fieldset>
+              <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+              <div class="input-block">
+                <label for="signup-email">E-mail</label>
+                <input id="signup-email" type="email" required>
+              </div>
+              <div class="input-block">
+                <label for="signup-password">Password</label>
+                <input id="signup-password" type="password" required>
+              </div>
+              <div class="input-block">
+                <label for="signup-password-confirm">Confirm password</label>
+                <input id="signup-password-confirm" type="password" required>
+              </div>
+            </fieldset>
+            <button type="submit" class="btn-signup">Continue</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </loginform>
+  <script src="index.js"></script>
+  <script src="login.js"></script>
+  <script src="loader.js"></script>
+</body>
+
+
+
+</html>
