@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Budget</title>
+    <link href="assests/bootstrap-5.3.2-dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/home.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar nav navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid mx-5">
+                <a class="navbar-brand" href="#"><span class="logo">Travel Treasury</span> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Budget</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Class
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- {{!-- -----About us---- --}} -->
+                    <div class="slide" onclick="showSidebar()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                            <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" />
+                        </svg>
+                        <p>About us</p>
+                    </div>
+                    <!-- {{!-- ----------------------------- --}} -->
+                </div>
+            </div>
+        </nav>
+        <div>
+            <h1> START YOUR JOURNEY</h1>
+        </div>
+        <div>
+            <h1>Enter Number of Members</h1>
+            <form id="memberForm">
+                <label for="numMembers">Number of Members:</label>
+                <input type="number" id="numMembers" name="numMembers" min="1" required>
+                <button type="button" onclick="generateMemberInputs()">Submit</button>
+            </form>
+
+            <div id="memberInputs"></div>
+            <div id="memberTable"></div>
+        </div>
+    </div>
+
+    <script src="assests/bootstrap-5.3.2-dist/js/budget.js"></script>
+</body>
+
+</html>

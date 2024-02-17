@@ -1,0 +1,228 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 100;
+    background-color: rgb(202, 213, 218);
+    
+
+}
+
+form {
+    max-width: 400px;
+    width: 100%; 
+    transition-duration: 3s;
+    animation: slideleft 1.2s ease forwards;
+}
+.border{
+    
+    padding: 20px;
+    border-radius: 2%;
+    box-shadow: black 10px;
+    background-color: rgb(224, 229, 233);
+    box-shadow: 10px 15px #88888836 ;
+    animation: floatAnimation 3s infinite ease-in-out;
+}
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translate(0%,0%) translateY(0);
+    }
+    50% {
+        transform: translate(0%,0%) translateY(-10px);
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 16px;
+    background-color: rgb(224, 229, 233);
+    border: 0px 0px 0px 1px;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+
+button {
+    background-color: #016bd5;
+    color: white;
+    padding: 15px 25px;
+    font-size: 2vh;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    size: 100%;
+    box-shadow: 2px 5px rgba(0, 0, 0, 0.288);
+}
+
+.image-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+
+.text-content {
+    position: absolute;
+    top: 40%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    color: aliceblue;
+}
+
+.tag1 {
+    font-weight: bold;
+    font-size: 6vw;
+    letter-spacing: 1px;
+    transition-duration: 3s;
+    animation: slideleft 1.2s ease forwards;
+    color: rgb(194, 233, 250);
+    font-family: 'Graduate', serif;
+    padding: 0;
+    margin: 0;
+}
+
+.tag2 {
+    /* white-space: nowrap; */
+    transition: 0.3s;
+    animation: slideRight 0.7s ease forwards;
+    letter-spacing: 1px;
+    font-size: 1.5vw;
+    font-family: 'Moon Dance', cursive;
+    color: rgb(194, 233, 250);
+    padding: 0;
+}
+.tag3 {
+    /* white-space: nowrap; */
+    
+    /* letter-spacing: px; */
+    font-size: 1.5vw;
+    font-family: 'Moon Dance', cursive;
+    color: rgb(194, 233, 250);
+    padding: 5vh 0 0 0 ;
+}
+
+    @media screen and (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+    
+        .image-container,
+        .form-container {
+            flex: 1;
+            order: 1;
+            width: 100%;
+        }
+    
+        .form-container {
+            padding: 20px;
+        }
+    
+        .text-content {
+            margin-bottom: 10px;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+        }
+    
+        .tag1 {
+            font-size: 2.5vw;
+
+        }
+    
+        .tag2 {
+            font-size: 1vw;
+        }
+    }
+    .tag{
+        /* position: absolute;
+        top: 3%;
+        left: 20%;
+        text-align: center;
+        color: #016bd5;
+        font-size: 4vh;
+        margin:0vh; */
+    }
+    .welcome{
+        font-size: 6.5vh;
+        text-align: center;
+        color: #016bd5;
+        padding: 0;
+        margin: 0;
+    }
+    .subtag{
+        font-size: 2.5vh;
+        text-align: center;
+    }
+    .log{
+        font-size: 3vh;
+        text-align: center;
+        color: #016bd5;
+    }
+    
+
+
+    .stars-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 100;
+    }
+    
+    .star {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        animation: flyAnimation linear infinite;
+    }
+    
+    @keyframes flyAnimation {
+        from {
+            transform: translateY(0) translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-100vh) translateX(100vw);
+            opacity: 0;
+        }
+    }
+
+
+
+
+
+

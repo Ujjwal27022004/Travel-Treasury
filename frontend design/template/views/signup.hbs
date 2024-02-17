@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/signup.css">
+    <title>Your Website</title>
+</head>
+<body>
+        <div>
+            <div class="text-content">
+                <p class="tag1">Travel Treasury</p>
+                <p class="tag2">
+                    Your Ultimate Companion for Budgeting Your Travel Expenses
+                </p >
+                <p class=tag3>Start your journey with us....</p>
+            </div>
+            <div class="container">
+                <div class="image-container">
+                    <!-- Your image goes here -->
+                    <img src="assests/images/signup2.jpg" alt="Background Image">
+                </div>
+                <div class="form-container">
+    
+                    <!-- Your sign-up form goes here -->
+                    <form action="/userinfo" method="POST">
+                        <p class="tag">SIGN UP</p>
+    
+                        <div class="border">
+                            <div class="mb-3">
+                                <label for="exampleInputUserName" class="form-label">Username</label>
+                                <input type="text" name="name" placeholder="Enter your Username" class="form-control" id="exampleInputUserName">
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" name="Email" placeholder="Enter your email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" required>
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" name="password" placeholder="Enter password" class="form-control" id="exampleInputPassword1">
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+                                <input type="password" name="cpassword" placeholder="same as password" class="form-control" id="exampleInputPassword2">
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+ 

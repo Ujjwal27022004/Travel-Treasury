@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/contact_us.css">
+    <title>Contact Us</title>
+</head>
+
+<body>
+    <div class="header">
+        <!-- Your header content goes here -->
+        <img src="assests/images/contact.jpg" alt="Contact Header Image">
+    </div>
+
+    <div class="contact-section">
+        <div class="container">
+            <div class="tag">
+                <h2 class="contact">Contact Us</h2>
+                <p>Where you are at home or in the wild we are here for you. There is a good chance your questions has
+                    been answered </p>
+            </div>
+
+            <div class="main">
+                <p class="name">Travel Treasury</p>
+                <div class="contain">
+
+                    <div class="wrapper">
+                  
+                      <div class="form">
+                        <h4>GET IN TOUCH</h4>
+                        <h2 class="form-headline">Send us a message</h2>
+                        <form id="submit-form" action="/contactinfo" method="POST">
+                          <p>
+                            <input name="name" id="name" class="form-input" type="text" placeholder="Your Name*">
+                            <small class="name-error"></small>
+                          </p>
+                          <p>
+                            <input name="email" id="email" class="form-input" type="email" placeholder="Your Email*">
+                            <small class="name-error"></small>
+                          </p>
+                          <p class="full-width">
+                            <input name="phoneno" id="company-name" class="form-input" type="number" placeholder="Phone No*" required>
+                            <small></small>
+                          </p>
+                          <p class="full-width">
+                            <textarea name="message"  minlength="20" id="message" cols="30" rows="7" placeholder="Your Message*" required></textarea>
+                            <small></small>
+                          </p>
+                          <p class="full-width">
+                            <input type="submit" class="submit-btn" value="Submit" onclick="checkValidations()">
+                            <button class="reset-btn" onclick="reset()">Reset</button>
+                          </p>
+                        </form>
+                      </div>
+                  
+                      <div class="contacts contact-wrapper">
+                  
+                        <ul>
+                          <li>We are here to manage your travel budget <span class="highlight-text-grey">Travel Treasury</span> Feel free to ask any question</li>
+                          <span class="hightlight-contact-info">
+                            <li class="email-info"><i class="fa fa-envelope" aria-hidden="true"></i> TravelTreasury@gmail.com</li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i> <span class="highlight-text">+91 11 1111 2900</span></li>
+                          </span>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <!-- Your social media icons go here -->
+        <a href="#" target="_blank"><img src="assests/images/facebook.png" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="assests/images/twitter.png" alt="Twitter"></a>
+        <a href="#" target="_blank"><img src="assests/images/instagram.png" alt="Instagram"></a>
+        <!-- Add more social media icons as needed -->
+    </div>
+</body>
+
+</html>
