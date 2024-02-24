@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header img {
+    width: 100%;
+    size: 10%;
+}
+.tag{
+    position: absolute;
+    top: 8vh;
+    left: 35vw;
+    color: white;
+}
+.contact{
+    font-size: 8vh;
+    
+}
+#group{
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    margin:30px;
+    font-size: 4vh;
+    border: 2px solid black;
+    left: 50%;
+}
+#groupicon{
+    height: 8vh;
+}
+#userInputForm{
+    
+}
+.Budget-section{
+    text-align: center;
+}

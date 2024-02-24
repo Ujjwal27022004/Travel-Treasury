@@ -1,9 +1,11 @@
-const mongoose = require('mongoose')
+// Expense.js
+const mongoose = require('mongoose');
 
-const memberSchema = new mongoose.Schema({
-    name: String,
-    paidMoney: Number
-  });
+const expenseSchema = new mongoose.Schema({
+  name: String,
+  totalSpent: Number
+});
 
-  const budgetdata = new mongoose.model('budgetdata',memberSchema)
-module.exports = budgetdata
+const Expense = mongoose.model('Expense', expenseSchema);
+
+module.exports = Expense;

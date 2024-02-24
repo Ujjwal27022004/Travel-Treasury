@@ -1,21 +1,27 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const app = express()
 require("./db/db.js")
 
 const bodyParser = require('body-parser');
 
+// const ejs = require ('ejs')
 const hbs = require ('hbs')
 const path = require('path')
 
 const userdata = require("./model/model.js")
 const contactdata = require("./model/model2.js")
-const Member = require("./model/model3.js")
+const Expense = require("./model/model3.js")
 
 const template_path = path.join(__dirname,"../template/views")
 
-app.use(express.urlencoded({extended:false}))
+app.use(bodyParser.json()); // Parse JSON data
+app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded data
 app.use(express.static(path.join(__dirname,"../template/views")));//for css file
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.urlencoded({extended:false}))
+
+// app.set('view engine','ejs')
 app.set('view engine','hbs')
 app.set('views',template_path)
 
@@ -25,7 +31,7 @@ app.set('views',template_path)
 // })
 
 app.get("",(req,res)=>{
-    res.render("home")
+    res.render("home.hbs")
 })
 // ------------------------------------------Home------------------------------
 app.get("/login",(req,res)=>{
@@ -110,73 +116,74 @@ app.get('/budget', (req, res) => {
     res.render("budget");
   });
   
-  app.get('/members', (req, res) => {
-    const numMembers = parseInt(req.query.num);
-    let inputsHTML = '';
-    for (let i = 0; i < numMembers; i++) {
-      inputsHTML += `<input type="text" name="member${i+1}" placeholder="Member ${i+1}"><br>`;
-    }
-    res.send(inputsHTML);
-  });
-
-  // API endpoint to submit member names
-app.post('/submitMembers', (req, res) => {
-  const memberNames = req.body;
   
-  // Delete existing members
-  Member.deleteMany({}, (err) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send('Error deleting existing members');
+
+
+app.post('/saveData', async (req, res) => {
+  try {
+    const { group,userData } = req.body;
+
+    if (!group || typeof group !== 'string' || group.trim() === '') {
+      return res.status(400).send('Invalid group name');
     }
+
+    if (!Array.isArray(userData) || userData.length === 0) {
+      return res.status(400).send('User data must be a non-empty array');
+    }
+
+    const GroupExpense = mongoose.model(group, Expense.schema);
+
+    for (let i = 0; i < userData.length; i++) {
+      const { name,totalSpent } = userData[i];
+      const expense = new GroupExpense({ name,totalSpent });
+      await expense.save();
+    }
+
+    res.send('Data saved successfully');
     
-    // Insert new members
-    Member.insertMany(memberNames.map(name => ({ name })))
-      .then(() => {
-
-        const Data = userinfo.save()
-        res.send(Data)
-
-        console.log('Members added to database');
-        res.redirect('/memberTable');
-      })
-      .catch(err => {
-        console.error(err);
-        res.status(500).send('Error adding members to database');
-      });
-  });
-
-  
+    console.log('Received data:', userData); // Logging received data
+    
+    // for (let i = 0; i < userData.length; i++) {
+    //   const { name } = userData[i];
+    //   const expense = new Expense({ name});
+    //   await expense.save();
+    //   console.log('Expense saved successfully:', expense); // Logging successful save
+    // }
+    
+    // 
+  } catch (error) {
+    console.error('Error saving expense:', error); // Logging error
+    res.status(500).send('Error saving expense');
+  }
 });
 
 
-  app.get('/memberTable', (req, res) => {
-    Member.find({}, (err, members) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-      } else {
-        let tableHTML = '<h2>Member Table</h2><table border="1"><tr><th>Name</th><th>Paid Money</th><th>Total Money Paid</th></tr>';
-        members.forEach(member => {
-          tableHTML += `<tr><td>${member.name}</td><td><input type="number" name="paidMoney" id="${member._id}" value="${member.paidMoney}" onchange="updatePaidMoney('${member._id}')"></td><td>${calculateTotalMoneyPaid(member._id)}</td></tr>`;
-        });
-        tableHTML += '</table>';
-        res.send(tableHTML);
-      }
-    });
-  });
+app.post('/updateCollection', async (req, res) => {
+  try {
+    const { group,data } = req.body;
 
-  function calculateTotalMoneyPaid(memberId) {
-    return Member.findById(memberId)
-      .then(member => {
-        let total = 0;
-        member.paidMoney = parseInt(member.paidMoney);
-        total += member.paidMoney;
-        return total;
-      })
-      .catch(err => console.error(err));
+    // Assuming each item in 'data' contains name and totalSpent
+    for (let i = 0; i < data.length; i++) {
+      const { name, totalSpent } = data[i];
+      
+      // Find the document in the collection and update the totalSpent field
+      await Expense.findOneAndUpdate({ name }, { totalSpent });
+    }
+
+    res.send('Collection updated successfully');
+  } catch (error) {
+    console.error('Error updating collection:', error);
+    res.status(500).send('Error updating collection');
   }
+});
+  
 
+ 
+
+
+  
+
+  
 
 // ------------------------------------------budget page---------------------------------------------------------
 app.get("*",(req,res)=>{
