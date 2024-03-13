@@ -41,7 +41,7 @@ app.get("/login",(req,res)=>{
 app.post("/loginpage",async (req,res)=>{
     try {
      const email = req.body.email
-     const password = req.body.password
+     const password = req.body.passwordnodemn
  
      const getemail = await userdata.findOne({email:email})
      // console.log(getemail)
@@ -163,6 +163,7 @@ app.post('/save-expense', async (req, res) => {
         // Calculate and update the total for the current group
         const total = await Expense.aggregate([{ $group: { _id: null, total: { $sum: "$amount" } } }]);
         await Expense.updateMany({}, { $set: { total: total[0].total } });
+        console.log(req.body)
 
         res.status(200).json({ success: true });
     } catch (error) {

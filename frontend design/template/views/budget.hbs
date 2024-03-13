@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/budget.css"> 
+    <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/budget.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Expense Tracker</title>
@@ -60,6 +60,15 @@
             }
         </script>
         <script>
+
+            function updateTotal(index) {
+                const amountInput = document.getElementById(`amount${index}`);
+                const totalCell = document.getElementById(`total${index}`);
+
+                const amount = parseFloat(amountInput.value) || 0;
+                totalCell.textContent = amount.toFixed(2);
+            }
+
             function Names() {
                 const personCount = document.getElementById('personCount').value;
                 const tableContainer = document.getElementById('tableContainer');
@@ -73,7 +82,7 @@
                 // Create table
                 let tableHTML = '<table>';
                 tableHTML += '<tr><th>Name</th><th>Amount Spent</th><th>Total</th></tr>';
-                
+
 
 
                 for (let i = 1; i <= personCount; i++) {
@@ -98,7 +107,7 @@
                 }
             }
 
-        
+
 
             function addAmount(index) {
                 // Get the amount input and total cell for the specified person
@@ -150,6 +159,7 @@
                             headers: {
                                 'Content-Type': 'application/json'
                             },
+
                             body: JSON.stringify({ name, amount })
                         });
                     }
