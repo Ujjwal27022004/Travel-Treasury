@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/login.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <title>Your Website</title>
 </head>
 <body>
 
+
     <div class="stars-container">
         <!-- Stars will be dynamically added here using JavaScript -->
+    </div>
+     <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="#"><i class="fa-solid fa-money-bill"></i>Budget</a>
+        <a href="#">Class</a>
+        <a href="#">Contact</a>
     </div>
     <div>
         <div class="text-content">
@@ -57,6 +67,19 @@
             </div>
         </div>
     </div>
+
+
+     <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
 </body>
 </html>
  

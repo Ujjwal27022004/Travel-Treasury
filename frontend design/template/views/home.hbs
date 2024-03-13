@@ -13,273 +13,278 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
   
 
+
   <!-- --------------------------------------------------------Fonts------------------------------------------------------- -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <!-- --------------------------------------------------------NAVBAR------------------------------------------------------- -->
-  
-    <div class=" my-3 mx-5 text-center">
-      <nav class="navbar nav navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid mx-5">
-          <a class="navbar-brand" href="#"><span class="logo">Travel Treasury</span> </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Budget</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Class
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <!-- {{!-- -----About us---- --}} -->
-            <div class="slide" onclick="showSidebar()">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" />
-              </svg>
-              <p>About us</p>
-            </div>
-            <!-- {{!-- ----------------------------- --}} -->
-          </div>
-        </div>
-      </nav>
 
-      <!-- --------------------------------------------------------NAVBAR END------------------------------------------------------- -->
-
-      <div class="sidebar">
-        <div onclick="hideSidebar()">
-          <div class="slide">
+  <div class=" my-3 mx-5 text-center">
+    <nav class="navbar nav navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid mx-5">
+        <a class="navbar-brand" href="/"><span class="logo">Travel Treasury</span> </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/budget">Budget</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/class">Class</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">Create Account</a>
+            </li>
+          </ul>
+          <!-- {{!-- -----About us---- --}} -->
+          <div class="slide" onclick="showSidebar()">
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-              <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+              <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" />
             </svg>
-            <p>Main page</p>
+            <p>About us</p>
           </div>
-          <section class="image-grid">
-            <img src="assests/images/UV.jpg" alt="Image">
-          </section>
-          <section class="text-grid">
-            <h2>Welcome to our website</h2>
-            <p>Hello, fellow wanderers! We are Ujjwal & Vaishnavi, a dynamic duo of passionate travelers turned tech
-              enthusiasts.
-              Our journey began with a shared love for exploring new places, discovering diverse cultures, and creating
-              unforgettable memories.
-              Inspired by our adventures, we embarked on a new quest to make travel planning simpler and budgeting
-              hassle-free.</p>
-            <h5>Our Story:</h5>
-            <p>The idea for Travel Treasury was born during one of our backpacking trips when we faced the challenges of
-              managing our travel expenses efficiently.
-              Determined to find a solution, we decided to combine our fresh perspectives and tech skills to create a
-              user-friendly platform that would revolutionize the way people plan and manage their travel budgets.</p>
-          </section>
+          <!-- {{!-- ----------------------------- --}} -->
         </div>
       </div>
-      <!-- {{!-- -------------------------home---------------------------------       --}} -->
+    </nav>
 
-      <div id="carouselExample" class="row carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assests/images/home.jpg" class="d-block w-100 custom-img main-image" alt="groupicon" />
-            <div class="home-content">
-              <div class="tag1">
-                <p>Travel Treasury</p>
-              </div>
-              <div class="tag2">
-                <p>
-                  Your Ultimate Companion for Budgeting Your Travel Expenses
-                </p>
-                <button id="login" type="button" onclick="toggleLoginForm()">
-                  Log In
-                </button>
-              </div>
-            </div>
-          </div>
+    <!-- --------------------------------------------------------NAVBAR END------------------------------------------------------- -->
 
+    <div class="sidebar">
+      <div onclick="hideSidebar()">
+        <div class="slide">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+          </svg>
+          <p>Main page</p>
         </div>
-      </div>
-      <div>
-
-        <!-- {{!-- --------------------------Home page---------------------- --}} -->
-
-        <p class="key-feature">Key Feature</p>
-        <div class="horizontal-container">
-          <div class="ticket">
-            <div >
-              <img class="img" src="assests/images/feature1.jpg" alt="">
-            </div>
-            <p class="img-tag">image</p>
-            <div class="content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ratione rem officia voluptatum officiis! Necessitatibus eaque reprehenderit porro provident accusamus.</p>
-            </div>
-          </div>
-          <div class="ticket">
-            <div >
-              <img class="img" src="assests/images/feature1.jpg" alt="">
-            </div>
-            <p class="img-tag">image</p>
-            <div class="content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ratione rem officia voluptatum officiis! Necessitatibus eaque reprehenderit porro provident accusamus.</p>
-            </div>
-          </div>
-          <div class="ticket">
-            <div>
-              <img class="img" src="assests/images/feature1.jpg" alt="">
-            </div>
-            <p class="img-tag">image</p>
-            <div class="content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ratione rem officia voluptatum officiis! Necessitatibus eaque reprehenderit porro provident accusamus.</p>
-            </div>
-          </div>
-          <div class="ticket">
-            <div>
-              <img class="img" src="assests/images/feature1.jpg" alt="">
-            </div>
-            <p class="img-tag">image</p>
-            <div class="content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ratione rem officia voluptatum officiis! Necessitatibus eaque reprehenderit porro provident accusamus.</p>
-            </div>
-          </div>
-          <div class="ticket">
-            <div>
-              <img class="img" src="assests/images/feature1.jpg" alt="">
-            </div>
-            <p class="img-tag">image</p>
-            <div class="content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ratione rem officia voluptatum officiis! Necessitatibus eaque reprehenderit porro provident accusamus.</p>
-            </div>
-          </div>
-          <div class="ticket">
-            <div>
-              <img class="img" src="assests/images/feature1.jpg" alt="">
-            </div>
-            <p class="img-tag">image</p>
-            <div class="content">
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ratione rem officia voluptatum officiis! Necessitatibus eaque reprehenderit porro provident accusamus.</p>
-            </div>
-          </div>
-
-
-        </div>
-
-        <section class="controller">
-          <button id="action-left">Left</button>
-          <button id="action-right">Right</button>
+        <section class="image-grid">
+          <img src="assests/images/UV.jpg" alt="Image">
         </section>
+        <section class="text-grid">
+          <h2>Welcome to our website</h2>
+          <p>Hello, fellow wanderers! We are Ujjwal & Vaishnavi, a dynamic duo of passionate travelers turned tech
+            enthusiasts.
+            Our journey began with a shared love for exploring new places, discovering diverse cultures, and creating
+            unforgettable memories.
+            Inspired by our adventures, we embarked on a new quest to make travel planning simpler and budgeting
+            hassle-free.</p>
+          <h5>Our Story:</h5>
+          <p>The idea for Travel Treasury was born during one of our backpacking trips when we faced the challenges of
+            managing our travel expenses efficiently.
+            Determined to find a solution, we decided to combine our fresh perspectives and tech skills to create a
+            user-friendly platform that would revolutionize the way people plan and manage their travel budgets.</p>
+        </section>
+      </div>
+    </div>
+    <!-- {{!-- -------------------------home---------------------------------       --}} -->
 
-
-        <!-- -----------------footer----------------- -->
-
-        <footer id="contact">
-          <div class="row">
-            <div class="col">
-              <p class="logo2">Travel Treasury</p>
-              <br />
+    <div id="carouselExample" class="row carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assests/images/home.jpg" class="d-block custom-img main-image" alt="groupicon" />
+          <div class="home-content">
+            <div class="tag1">
+              <p>Travel Treasury</p>
+            </div>
+            <div class="tag2">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                perspiciatis, ad similique neque maxime aut. Quas libero nesciunt
-                similique et nemo inventore fugiat harum odit, dolor impedit
-                omnis, adipisci doloribus.
+                Your Ultimate Companion for Budgeting Your Travel Expenses
               </p>
-            </div>
-
-            <div class="col">
-              <h3>
-                Address
-                
-                <div class="underline"><span></span></div>
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-                deserunt maiores impedit aspernatur illum neque?
-              </p>
-
-              <p class="email-id">Loremipsum@gmail.com</p>
-              <h4>+91-1234567890</h4>
-            </div>
-            <div class="col">
-              <h3>
-                Links
-                <div class="underline"><span></span></div>
-              </h3>
-
-              <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Budget</a></li>
-                <li><a href="">Class</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">About us</a></li>
-                <li></li>
-              </ul>
-            </div>
-            <div class="col">
-              <h3>
-                Social
-                <div class="underline"><span></span></div>
-              </h3>
-              <div class="social-icons">
-                <a href="" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                <a href="" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <!-- <i class="fa-brands fa-pi"></i> -->
+              <div>
+                <p class="tag3">
+                  Embark on your next adventure with confidence and financial clarity, At Travel Treasury,<br>
+                  we understand the importance of smart budgeting when it comes to travel. Whether you're planning a<br>
+                  weekend getaway or a globetrotting expedition, we're here to help you make the most of every penny<br>
+                  while exploring the world.
+                </p>
               </div>
+              <button id="login" type="button" onclick="toggleLoginForm()">
+                Log In
+              </button>
             </div>
           </div>
-        </footer>
-
-
+        </div>
 
       </div>
     </div>
-    <!-- --------------------------------------------------------HOME END------------------------------------------------------- -->
+    <div>
 
-    <script src="assests/bootstrap-5.3.2-dist/js/home.js"></script>
-    <!-- <script src="assests/bootstrap-5.3.2-dist/js/script.js"></script>
+      <!-- {{!-- --------------------------Home page---------------------- --}} -->
+
+      <p class="key-feature">Key Feature</p>
+      <div class="horizontal-container">
+        <div class="ticket">
+          <div>
+            <img class="img" src="assests/images/feature1.jpg" alt="">
+          </div>
+          <p class="img-tag">Expense Tracking</p>
+          <div class="content">
+            <p>Users can track expenses within a group. They can input the names of group members and record the amount
+              each member has paid.</p>
+          </div>
+        </div>
+        <div class="ticket">
+          <div>
+            <img class="img" src="assests/images/feature2.jpg" alt="">
+          </div>
+          <p class="img-tag">Group Management</p>
+          <div class="content">
+            <p>Users can set a group name to categorize expenses. The group name is prominently displayed on the page
+              once set..</p>
+          </div>
+        </div>
+        <div class="ticket">
+          <div>
+            <img class="img" src="assests/images/feature3.png" alt="">
+          </div>
+          <p class="img-tag">Dynamic Input Fields</p>
+          <div class="content">
+            <p>The website dynamically generates input fields for member names based on the count provided by the user.
+            </p>
+          </div>
+        </div>
+        <div class="ticket">
+          <div>
+            <img class="img" src="assests/images/feature4.png" alt="">
+          </div>
+          <p class="img-tag">Total Calculation</p>
+          <div class="content">
+            <p>Users can calculate the total amount spent by each member and the grand total of expenses within the
+              group.</p>
+          </div>
+        </div>
+        <div class="ticket">
+          <div>
+            <img class="img" src="assests/images/feature5.jpg" alt="">
+          </div>
+          <p class="img-tag">Data Submission</p>
+          <div class="content">
+            <p>After entering the expense details, users can submit the data. This likely involves sending the entered
+              data to a server-side endpoint for further processing.</p>
+          </div>
+        </div>
+        <div class="ticket">
+          <div>
+            <img class="img" src="assests/images/feature6.jpg" alt="">
+          </div>
+          <p class="img-tag">Visual Enhancements</p>
+          <div class="content">
+            <p> The website utilizes images and icons to enhance the visual appeal, such as the header image and the
+              group icon.</p>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+
+      <!-- -----------------footer----------------- -->
+
+      <footer id="contact">
+        <div class="row">
+          <div class="col">
+            <p class="logo2">Travel Treasury</p>
+            <br />
+            <p>
+              Embark on your next adventure with confidence and financial clarity, At Travel Treasury,
+              we understand the importance of smart budgeting when it comes to travel. Whether you're planning a
+              weekend getaway or a globetrotting expedition, we're here to help you make the most of every penny
+              while exploring the world.
+            </p>
+          </div>
+
+          <div class="col">
+            <h3>
+              Address
+
+              <div class="underline"><span></span></div>
+            </h3>
+            <p>
+              Shri Guru Gobind Singhji institute of engineering and Technology,Vishnupuri, Nanded, Maharastra, India,431 606
+            </p>
+
+            <p class="email-id">Vaishnavi@gmail.com</p>
+            <h4>+91-1234567890</h4>
+          </div>
+          <div class="col">
+            <h3>
+              Links
+              <div class="underline"><span></span></div>
+            </h3>
+
+            <ul class="footer-nav">
+              <li><a href="home">Home</a></li>
+              <li><a href="budget">Budget</a></li>
+              <li><a href="class">Class</a></li>
+              <li><a href="contact">Contact</a></li>
+              <li><a href="about">About us</a></li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3>
+              Social
+              <div class="underline"><span></span></div>
+            </h3>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+              <a href="" target="_blank"><i class="fa-brands fa-github"></i></a>
+              <!-- <i class="fa-brands fa-pi"></i> -->
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+
+    </div>
+  </div>
+  <!-- --------------------------------------------------------HOME END------------------------------------------------------- -->
+
+  <script src="assests/bootstrap-5.3.2-dist/js/home.js"></script>
+  <!-- <script src="assests/bootstrap-5.3.2-dist/js/script.js"></script>
   <script src="assests/bootstrap-5.3.2-dist/js/swiper-bundle.min.js"></script> -->
 
-    <script>
-      function showSidebar() {
-        const sidebar = document.querySelector(".sidebar");
-        sidebar.style.display = 'flex';
-        showSidebar.scrollIntoView({ behavior: 'smooth' });
+  <script>
 
-      }
-      function hideSidebar() {
-        const sidebar = document.querySelector('.sidebar')
-        sidebar.style.display = "none";
-        hideSidebar.scrollIntoView({ behavior: 'smooth' });
+    function toggleLoginForm() {
+      // Navigate to another page
+      window.location.href = "login"; // Change "anotherpage.html" to the desired page URL
+    }
 
-      }
-    </script>
+    function showSidebar() {
+      const sidebar = document.querySelector(".sidebar");
+      sidebar.style.display = 'flex';
+      showSidebar.scrollIntoView({ behavior: 'smooth' });
+
+    }
+    function hideSidebar() {
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = "none";
+      hideSidebar.scrollIntoView({ behavior: 'smooth' });
+
+    }
+  </script>
 </body>
 
 </html>

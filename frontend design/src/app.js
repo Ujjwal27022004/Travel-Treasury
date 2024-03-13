@@ -11,7 +11,7 @@ const path = require('path')
 
 const userdata = require("./model/model.js")
 const contactdata = require("./model/model2.js")
-const Expense = require("./model/model3.js")
+// const Expense = require("./model/model3.js")
 
 const template_path = path.join(__dirname,"../template/views")
 
@@ -112,49 +112,73 @@ app.post("/contactinfo",async (req,res)=>{
         res.send(postcontactData)
 })
 // .........................................contact userdata....................................................
-app.get('/budget', (req, res) => {
-    res.render("budget");
-  });
-  
-  
 
+let currentGroupName = "";
+let Expense; // Dynamic model for the current group name
 
-app.post('/saveData', async (req, res) => {
-  try {
-    const { group,userData } = req.body;
+// Modify the schema to include name, amount, and total fields
+const expenseSchema = new mongoose.Schema({
+    name: String,
+    amount: Number,
+    total: Number
+});
 
-    if (!group || typeof group !== 'string' || group.trim() === '') {
-      return res.status(400).send('Invalid group name');
+// Create a function to generate the model dynamically based on group name
+const getExpenseModel = (groupName) => mongoose.model(`${groupName}`, expenseSchema);
+
+app.get('/budget', (req, resp) => {
+    resp.render('budget', { currentGroupName });
+});
+
+app.post('/set-group-name', (req, res) => {
+    const { groupName } = req.body;
+
+    if (!groupName) {
+        return res.status(400).json({ error: 'Invalid group name' });
     }
 
-    if (!Array.isArray(userData) || userData.length === 0) {
-      return res.status(400).send('User data must be a non-empty array');
+    // Set the current group name
+    currentGroupName = groupName;
+
+    // Create the dynamic model for the current group name
+    Expense = getExpenseModel(currentGroupName);
+
+    res.status(200).json({ success: true, groupName });
+});
+
+app.post('/save-expense', async (req, res) => {
+    const { name, amount } = req.body;
+
+    if (!name || !amount || isNaN(amount)) {
+        return res.status(400).json({ error: 'Invalid data' });
     }
 
-    const GroupExpense = mongoose.model(group, Expense.schema);
+    try {
+        // Create a new expense with name and amount
+        const newExpense = new Expense({ name, amount });
 
-    for (let i = 0; i < userData.length; i++) {
-      const { name,totalSpent } = userData[i];
-      const expense = new GroupExpense({ name,totalSpent });
-      await expense.save();
+        // Save the expense to the database
+        await newExpense.save();
+
+        // Calculate and update the total for the current group
+        const total = await Expense.aggregate([{ $group: { _id: null, total: { $sum: "$amount" } } }]);
+        await Expense.updateMany({}, { $set: { total: total[0].total } });
+
+        res.status(200).json({ success: true });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
+});
 
-    res.send('Data saved successfully');
-    
-    console.log('Received data:', userData); // Logging received data
-    
-    // for (let i = 0; i < userData.length; i++) {
-    //   const { name } = userData[i];
-    //   const expense = new Expense({ name});
-    //   await expense.save();
-    //   console.log('Expense saved successfully:', expense); // Logging successful save
-    // }
-    
-    // 
-  } catch (error) {
-    console.error('Error saving expense:', error); // Logging error
-    res.status(500).send('Error saving expense');
-  }
+app.get('/get-expense-data', async (req, res) => {
+    try {
+        const expenses = await Expense.find();
+        res.status(200).json({ expenses });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 
@@ -176,6 +200,9 @@ app.post('/updateCollection', async (req, res) => {
     res.status(500).send('Error updating collection');
   }
 });
+
+
+
   
 
  

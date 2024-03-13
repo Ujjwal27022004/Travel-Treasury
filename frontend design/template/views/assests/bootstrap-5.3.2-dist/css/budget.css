@@ -1,38 +1,492 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.078);
 }
 
-.header img {
-    width: 100%;
-    size: 10%;
+#tag1 {
+
+  text-align: center;
+  font-size: 4vw;
+  font-weight: bold;
+  margin: 0%;
+  letter-spacing: 2.5px;
+
 }
-.tag{
-    position: absolute;
-    top: 8vh;
-    left: 35vw;
-    color: white;
+
+#taglines {
+  position: absolute;
+  top: 10%; /*Position the text in the vertical center */
+  left: 50%; /* Position the text in the horizontal center */
+  transform: translate(-50%, -50%);
 }
-.contact{
-    font-size: 8vh;
-    
+
+#tag2 {
+  text-align: center;
+  font-size: 2.5vh;
+  margin: 0;
 }
-#group{
-    width: 50%;
-    text-align: center;
-    padding: 10px;
-    margin:30px;
-    font-size: 4vh;
-    border: 2px solid black;
-    left: 50%;
+
+#groupTitle {
+  text-align: center;
+  margin-top: 10vh;
+  font-size:2vw;
+  /* filter:drop-shadow(10px,7px,10px,yellow); */
+  
 }
-#groupicon{
-    height: 8vh;
+
+#main {
+  /* justify-content: center; */
+  display: flex;
 }
-#userInputForm{
-    
+
+#menu {
+  left: 0;
+  font-size:20px;
+  cursor:pointer;
 }
-.Budget-section{
-    text-align: center;
+
+#app {
+  margin-top: 10vh;
+  position: absolute;
+  top: 30%; /*Position the text in the vertical center */
+  left: 50%; /* Position the text in the horizontal center */
+  transform: translate(-50%, -50%);
+}
+
+#hide2{
+  position: absolute;
+  top: 40%; /*Position the text in the vertical center */
+  left: 50%; /* Position the text in the horizontal center */
+  transform: translate(-50%, -50%);
+  margin-left: 10vw;
+}
+#grp-name{
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%,-50%);
+  margin: 1vw;
+  font-size: 1.5vw;
+}
+
+#groupbtn{
+  margin: 1.5vw;
+  padding: 0.5vw; 
+  font-size: 1.1vw;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);}
+
+#groupName{
+  font-size: 1.5vw;
+  padding-left: 1.3vw;
+  padding-right: 1.3vw;
+  padding-top: 0.75vh;
+  padding-bottom: 0.75vh;
+}
+
+#count-grp{
+  text-align: center;
+  align-items: center;
+  transform: translate(-50%,-50%);
+  margin: 1vw;
+  font-size: 1.5vw;
+}
+#personCount{
+  font-size: 1.5vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-top: 0.75vh;
+  padding-bottom: 0.75vh;
+}
+
+#count-button{
+  margin: 1.5vw;
+  padding: 0.5vw; 
+  font-size: 1.1vw;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#tableContainer table,
+#tableContainer th,
+#tableContainer td {
+  border: 1px solid #ddd;
+}
+
+#tableContainer th,
+#tableContainer td {
+  padding: 10px;
+  text-align: left;
+}
+
+#tableContainer th {
+  background-color: #f2f2f2;
+}
+
+#tableContainer2 table {
+  overflow: hidden;
+  border: 1px solid #d3d3d3;
+  background: #fefefe;
+  width: 70%;
+  margin: 5% auto 0;
+  -moz-border-radius: 5px;
+  /* FF1+ */
+  -webkit-border-radius: 5px;
+  /* Saf3-4 */
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+#tableContainer2 th,
+#tableContainer2 td {
+  padding: 18px 28px 18px;
+  text-align: center;
+}
+
+#tableContainer2 th {
+  padding-top: 22px;
+  text-shadow: 1px 1px 1px #fff;
+  background: #e8eaeb;
+}
+
+#tableContainer2 td {
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+}
+
+#tableContainer2 tr.odd-row td {
+  background: #f6f6f6;
+}
+
+#tableContainer2 td.first,
+#tableContainer2 th.first {
+  text-align: left
+}
+
+#tableContainer2 td.last {
+  border-right: none;
+}
+
+#tableContainer2 td {
+  background: -moz-linear-gradient(100% 25% 90deg, #fefefe, #f9f9f9);
+  background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f9f9f9), to(#fefefe));
+}
+
+#tableContainer2 tr.odd-row td {
+  background: -moz-linear-gradient(100% 25% 90deg, #f6f6f6, #f1f1f1);
+  background: -webkit-gradient(linear, 0% 0%, 0% 25%, from(#f1f1f1), to(#f6f6f6));
+}
+
+#tableContainer2 th {
+  background: -moz-linear-gradient(100% 20% 90deg, #e8eaeb, #ededed);
+  background: -webkit-gradient(linear, 0% 0%, 0% 20%, from(#ededed), to(#e8eaeb));
+}
+
+/*
+I know this is annoying, but we need dditional styling so webkit will recognize rounded corners on background elements.
+Nice write up of this issue: http://www.onenaught.com/posts/266/css-inner-elements-breaking-border-radius
+
+And, since we've applied the background colors to td/th element because of IE, Gecko browsers also need it.
+*/
+
+#tableContainer2 tr:first-child th.first {
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  /* Saf3-4 */
+}
+
+#tableContainer2 tr:first-child th.last {
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  /* Saf3-4 */
+}
+
+#tableContainer2 tr:last-child td.first {
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  /* Saf3-4 */
+}
+
+#tableContainer2 tr:last-child td.last {
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  /* Saf3-4 */
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+
+.type--A{
+  --line_color : #555555 ;
+  --back_color : #FFECF6  ;
+}
+
+.button{
+    position : relative ;
+    z-index : 0 ;
+    width : 240px ;
+    height : 56px ;
+    text-decoration : none ;
+    font-size : 14px ; 
+    font-weight : bold ;
+    color : var(--line_color) ;
+    letter-spacing : 2px ;
+    transition : all .3s ease ;
+}
+.button__text{
+    display : flex ;
+    justify-content : center ;
+    align-items : center ;
+    width : 100% ;
+    height : 100% ;
+}
+.button::before,
+.button::after,
+.button__text::before,
+.button__text::after{
+    content : '' ;
+    position : absolute ;
+    height : 3px ;
+    border-radius : 2px ;
+    background : var(--line_color) ;
+    transition : all .5s ease ;
+}
+.button::before{
+    top : 0 ;
+    left : 54px ;
+    width : calc( 100% - 56px * 2 - 16px ) ;
+}
+.button::after{
+    top : 0 ;
+    right : 54px ;
+    width : 8px ;
+}
+.button__text::before{
+    bottom : 0 ;
+    right : 54px ;
+    width : calc( 100% - 56px * 2 - 16px ) ;
+}
+.button__text::after{
+    bottom : 0 ;
+    left : 54px ;
+    width : 8px ;
+}
+.button__line{
+    position : absolute ;
+    top : 0 ;
+    width : 56px ;
+    height : 100% ;
+    overflow : hidden ;
+}
+.button__line::before{
+    content : '' ;
+    position : absolute ;
+    top : 0 ;
+    width : 150% ;
+    height : 100% ;
+    box-sizing : border-box ;
+    border-radius : 300px ;
+    border : solid 3px var(--line_color) ;
+}
+.button__line:nth-child(1),
+.button__line:nth-child(1)::before{
+    left : 0 ;
+}
+.button__line:nth-child(2),
+.button__line:nth-child(2)::before{
+    right : 0 ;
+}
+.button:hover{
+    letter-spacing : 6px ;
+}
+.button:hover::before,
+.button:hover .button__text::before{
+    width : 8px ;
+}
+.button:hover::after,
+.button:hover .button__text::after{
+    width : calc( 100% - 56px * 2 - 16px ) ;
+}
+.button__drow1,
+.button__drow2{
+    position : absolute ;
+    z-index : -1 ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+}
+.button__drow1{
+    top : -16px ;
+    left : 40px ;
+    width : 32px ;
+    height : 0;
+    transform : rotate( 30deg ) ;
+}
+.button__drow2{
+    top : 44px ;
+    left : 77px ;
+    width : 32px ;
+    height : 0 ;
+    transform : rotate(-127deg ) ;
+}
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2::before,
+.button__drow2::after{
+    content : '' ;
+    position : absolute ;
+}
+.button__drow1::before{
+    bottom : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( -60deg ) ;
+}
+.button__drow1::after{
+    top : -10px ;
+    left : 45px ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( 69deg ) ;
+}
+.button__drow2::before{
+    bottom : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( -146deg ) ;
+}
+.button__drow2::after{
+    bottom : 26px ;
+    left : -40px ;
+    width : 0 ;
+    height : 32px ;
+    border-radius : 16px ;
+    transform-origin : 16px 16px ;
+    transform : rotate( -262deg ) ;
+}
+.button__drow1,
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2,
+.button__drow2::before,
+.button__drow2::after{
+    background : var( --back_color ) ;
+}
+.button:hover .button__drow1{
+    animation : drow1 ease-in .06s ;
+    animation-fill-mode : forwards ;
+}
+.button:hover .button__drow1::before{
+    animation : drow2 linear .08s .06s ;
+    animation-fill-mode : forwards ;
+}
+.button:hover .button__drow1::after{
+    animation : drow3 linear .03s .14s ;
+    animation-fill-mode : forwards ;
+}
+.button:hover .button__drow2{
+    animation : drow4 linear .06s .2s ;
+    animation-fill-mode : forwards ;
+}
+.button:hover .button__drow2::before{
+    animation : drow3 linear .03s .26s ;
+    animation-fill-mode : forwards ;
+}
+.button:hover .button__drow2::after{
+    animation : drow5 linear .06s .32s ;
+    animation-fill-mode : forwards ;
+}
+@keyframes drow1{
+    0%   { height : 0 ; }
+    100% { height : 100px ; }
+}
+@keyframes drow2{
+    0%   { width : 0 ; opacity : 0 ;}
+    10%  { opacity : 0 ;}
+    11%  { opacity : 1 ;}
+    100% { width : 120px ; }
+}
+@keyframes drow3{
+    0%   { width : 0 ; }
+    100% { width : 80px ; }
+}
+@keyframes drow4{
+    0%   { height : 0 ; }
+    100% { height : 120px ; }
+}
+@keyframes drow5{
+    0%   { width : 0 ; }
+    100% { width : 124px ; }
+}
+
+
+
+
+
+
+/* 本体には関係ないスタイル */
+.container{
+    width : 100% ;
+    height : 300px ;
+    display : flex ;
+    flex-direction : column ;
+    justify-content : center ;
+    align-items : center ;
+}
+.button:not(:last-child){
+  margin-bottom : 64px ;
 }

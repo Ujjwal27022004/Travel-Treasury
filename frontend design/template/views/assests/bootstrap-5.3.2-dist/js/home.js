@@ -1,6 +1,8 @@
 import "./";
 import $ from "jquery";
 
+
+
 const container = document.querySelector(".horizontal-container");
 const tickets = document.querySelectorAll(".ticket");
 

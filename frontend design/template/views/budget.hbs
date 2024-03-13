@@ -4,184 +4,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Budget</title>
-    <link href="assests/bootstrap-5.3.2-dist/css/bootstrap.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/budget.css" />
+    <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/budget.css"> 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Expense Tracker</title>
 </head>
 
 <body>
-  <div class="header">
-        <!-- Your header content goes here -->
-        <img src="assests/images/budget-img.jpg" alt="Contact Header Image">
-    </div>
 
-    <div class="Budget-section">
-        <div class="container">
-            <div class="tag">
-                <p class="contact">Travel Treasury</p>
-                <p> </p>
-            </div>
-
-    <form id="userInputForm">
-      <div id="group">
-        <label for="groupName">Enter Group Name:</label><br>
-        <img id="groupicon" src="assests/images/groupicon.png" alt="icon">
-        <input type="text" id="groupName" required><br>
-      </div>
-    
-        <label for="count">Enter Count:</label>
-        <input type="number" id="count" required><br>
-    
-        <div id="memberInputs"></div>
-      </form>
-    
-      <button id="calculateTotalBtn">Click</button>
-    
-    
-    
-      <table id="expenseTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Amount Paid</th>
-            <th>Total Spent</th>
-          </tr>
-        </thead>
-        <tbody id="expenseTableBody"></tbody>
-      </table>
-    
-      <button id="submitBtn">Submit</button>
+    <div id="app">
+        <h1 id="groupTitle">Expense Tracker</h1>
+        <div id="hide">
+            <label for="groupName">Enter Group Name:</label>
+            <input type="text" id="groupName">
+            <button onclick="setGroupName()">Set Group Name</button>
         </div>
-      <script>
-        document.getElementById('count').addEventListener('input', function () {
-          const count = parseInt(this.value);
-          const memberInputs = document.getElementById('memberInputs');
-    
-          let inputsHTML = '';
-          for (let i = 0; i < count; i++) {
-            inputsHTML += `
-              <label for="name${i}">Enter Name:</label>
-              <input name="name" type="text" id="name${i}" required>`;
-          }
-    
-          memberInputs.innerHTML = inputsHTML;
-        });
-    
-    
-    
-        document.getElementById('calculateTotalBtn').addEventListener('click', function () {
-          const group = document.getElementById('groupName').value.trim();
-          const count = parseInt(document.getElementById('count').value);
-          const userData = [];
-    
-          for (let i = 0; i < count; i++) {
-            const name = document.getElementById(`name${i}`).value;
-            userData.push({ name });
-          }
-    
-          fetch('/saveData', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ group, userData }), // Issue might be here
-          })
-            .then(response => response.json())
-            .then(data => {
-              console.log(data);
-              alert(data)
-            })
-            .catch(error => {
-              console.error('Error:', error);
-            });
-    
-          const expenseTableBody = document.getElementById('expenseTableBody');
-          expenseTableBody.innerHTML = '';
-          userData.forEach(({ name }) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-              <td>${name}</td>
-              <td>
-                <input type="number" class="amountPaid">
-                </td>
-                <td><button class="addButton">Add</button>
-              </td>
-              <td class="totalSpent">0</td>
-            `;
-            expenseTableBody.appendChild(row);
-          });
-        });
-    
-    
-    
-    
-    
-    
-        document.getElementById('expenseTable').addEventListener('click', function (event) {
-          if (event.target.classList.contains('amountPaid')) {
-            const row = event.target.closest('tr');
-            const amountPaid = parseFloat(event.target.value || 0);
-            const totalSpentCell = row.querySelector('.totalSpent');
-            let totalSpent = parseFloat(totalSpentCell.textContent || 0);
-            totalSpent += amountPaid;
-            totalSpentCell.textContent = totalSpent.toFixed(2); // Format to two decimal places
-          }
-        });
-    
-    
-        document.getElementById('expenseTable').addEventListener('click', function (event) {
-          if (event.target.classList.contains('addButton')) {
-            const row = event.target.closest('tr');
-            const amountInput = row.querySelector('.amountPaid');
-            const amountPaid = parseFloat(amountInput.value || 0);
-            const totalSpentCell = row.querySelector('.totalSpent');
-            let totalSpent = parseFloat(totalSpentCell.textContent || 0);
-            totalSpent += amountPaid;
-            totalSpentCell.textContent = totalSpent.toFixed(2); // Format to two decimal places
-            amountInput.value = ''; // Clear the input field
-          }
-        });
-    
-        document.getElementById('submitBtn').addEventListener('click', function () {
-          const data = [];
-          const rows = document.querySelectorAll('#expenseTable tbody tr');
-          rows.forEach(row => {
-            const name = row.cells[0].textContent;
-            const totalSpent = parseFloat(row.cells[2].textContent);
-            data.push({ name, totalSpent });
-          });
-    
-          fetch('/updateCollection', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ group,data }),
-          })
-          .then(response => response.text())
-          .then(data => {
-            alert(data);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Error updating collection. Please try again.');
-          });
-        });
-    
-    
-      </script>
 
-    
+        <div id="expenseInputs" style="display:none;">
+            <label for="personCount">Enter the count of persons:</label>
+            <input type="number" id="personCount" min="1">
+
+            <button onclick="Names()">Generate Table</button>
+
+            <div id="tableContainer"></div>
+            <button onclick="saveExpenseToDatabase()">Done</button>
+        </div>
+
+
+        <script>
+            async function setGroupName() {
+                const groupNameInput = document.getElementById('groupName');
+                const groupName = groupNameInput.value;
+
+                if (groupName) {
+                    // Display group name in h1 tag
+                    document.getElementById('groupTitle').textContent = `Welcome  ${groupName}`;
+
+                    // Hide group name input and show expense inputs
+                    document.getElementById('hide').style.display = 'none';
+                    document.getElementById('groupTitle').style.display = 'block'; // Display the updated group title
+                    document.getElementById('expenseInputs').style.display = 'block';
+
+                    // Send group name to the server
+                    await fetch('/set-group-name', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ groupName })
+                    });
+                } else {
+                    alert('Please enter a valid group name.');
+                }
+
+            }
+        </script>
+        <script>
+            function Names() {
+                const personCount = document.getElementById('personCount').value;
+                const tableContainer = document.getElementById('tableContainer');
+
+                // Validation
+                if (!personCount || personCount < 1) {
+                    alert('Please enter a valid person count.');
+                    return;
+                }
+
+                // Create table
+                let tableHTML = '<table>';
+                tableHTML += '<tr><th>Name</th><th>Amount Spent</th><th>Total</th></tr>';
+                
+
+
+                for (let i = 1; i <= personCount; i++) {
+                    tableHTML += `<tr>`;
+                    tableHTML += `<td><input type="text" id="name${i}" placeholder="Person ${i}"></td>`;
+                    tableHTML += `<td><input type="number" id="amount${i}" min="0" placeholder="0">
+                    <button onclick="addAmount(${i})"><i class="fa-solid fa-plus"></i></button></td>`;
+                    tableHTML += `<td id="total${i}">0</td>`;
+                    tableHTML += `</tr>`;
+                }
+
+                tableHTML += `<tr><td colspan="3">
+            <button onclick="calculateGrandTotal()">Total</button></td><td id="grandTotal">0</td></tr>`;
+                tableHTML += '</table>';
+
+                tableContainer.innerHTML = tableHTML;
+
+                // Attach event listeners
+                for (let i = 1; i <= personCount; i++) {
+                    const amountInput = document.getElementById(`amount${i}`);
+                    amountInput.addEventListener('input', () => updateTotal(i));
+                }
+            }
+
+        
+
+            function addAmount(index) {
+                // Get the amount input and total cell for the specified person
+                const amountInput = document.getElementById(`amount${index}`);
+                const totalCell = document.getElementById(`total${index}`);
+
+                // Get the current total for the specified person (or default to 0 if not a valid number)
+                const currentTotal = parseFloat(totalCell.textContent) || 0;
+
+                // Get the amount entered by the user (or default to 0 if not a valid number)
+                const amount = parseFloat(amountInput.value) || 0;
+
+                // Calculate the new total by adding the current total and the new amount
+                const newTotal = currentTotal + amount;
+
+                // Update the total cell for the specified person with the new total
+                totalCell.textContent = newTotal.toFixed(2);
+
+                // Set the amount input to zero for the specified person
+                amountInput.value = "0";
+            }
+
+            function calculateGrandTotal() {
+                const personCount = document.getElementById('personCount').value;
+                let grandTotal = 0;
+
+                for (let i = 1; i <= personCount; i++) {
+                    grandTotal += parseFloat(document.getElementById(`total${i}`).textContent) || 0;
+                }
+
+                document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
+            }
+
+        </script>
+
+        <!-- Add this script tag in your HTML file -->
+        <script>
+            async function saveExpenseToDatabase() {
+                const personCount = document.getElementById('personCount').value;
+
+                for (let i = 1; i <= personCount; i++) {
+                    const name = document.getElementById(`name${i}`).value;
+                    const amount = document.getElementById(`amount${i}`).value;
+
+                    if (name && amount && !isNaN(amount)) {
+                        // Send data to the server
+                        await fetch('/save-expense', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ name, amount })
+                        });
+                    }
+                }
+
+                alert('Data saved to the database!');
+            }
+        </script>
+    </div>
 </body>
 
 </html>

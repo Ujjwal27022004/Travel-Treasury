@@ -3,12 +3,12 @@
   font-size: 35px;
 }
 .custom-img {
-  height: 350px; /* Set the desired reduced height */
+  height: 400px; /* Set the desired reduced height */
   object-fit: cover; /* This property ensures the image covers the specified height without distorting its aspect ratio */
 }
 .home-content {
   position: absolute;
-  top: 30%; /* Position the text in the vertical center */
+  top: 45%; /* Position the text in the vertical center */
   left: 50%; /* Position the text in the horizontal center */
   transform: translate(-50%, -50%); /* Center the text precisely */
   font-weight: bold; /* Font weight */
@@ -17,7 +17,7 @@
 
 .tag1 {
   font-weight: bold;
-  font-size: 3.9vw;
+  font-size: 4.3vw;
   letter-spacing: 1px;
   transition-duration: 3s;
   animation: slideleft 1.2s ease forwards;
@@ -27,6 +27,8 @@
   margin: 0;
   padding: 0;
   /* transition-delay: 1s; */
+  line-height: 0.5;
+  
 }
 
 .tag2 {
@@ -39,6 +41,18 @@
   color: rgb(7, 7, 7);
   padding: 1;
   margin: 0;
+}
+.tag3{
+  white-space: nowrap;
+  transition: 0.3s;
+  animation: slideLeft 0.7s ease forwards;
+  letter-spacing: 1px;
+  font-size: 1.2vw;
+  color: rgb(7, 7, 7);
+  padding: 0;
+  margin-top: 5%;
+  
+
 }
 
 #login {
@@ -62,7 +76,8 @@
 }
 .main-image {
   margin-top: 3vh;
-  height: 75vh;
+  height: 80vh;
+  width: 80vw;
 }
 
 @keyframes slideRight {
@@ -251,6 +266,10 @@ ul li a {
   
   left: 0;
   overflow: hidden;
+}
+
+.footer-nav a{
+  color: blue;
 }
 
 .underline span {
