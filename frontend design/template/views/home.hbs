@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/style.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
-  
+
 
 
   <!-- --------------------------------------------------------Fonts------------------------------------------------------- -->
@@ -37,19 +37,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/"><img class="navbar-icon" src="assests/images/homepage.png">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/budget">Budget</a>
+              <a class="nav-link" href="/budget"><img class="navbar-icon" src="assests/images/money-bag.png">Budget</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/class">Class</a>
+              <a class="nav-link" href="/class"><img class="navbar-icon" src="assests/images/people.png">Class</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact us</a>
+              <a class="nav-link" href="/contact"><img class="navbar-icon" src="assests/images/contact-form.png">Contact us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/signup">Create Account</a>
+              <a class="nav-link" href="#help"><img class="navbar-icon" src="assests/images/question.png">Help</a>
             </li>
           </ul>
           <!-- {{!-- -----About us---- --}} -->
@@ -195,99 +195,189 @@
 
       </div>
 
+      <div id="help">
+        <div class="container">
 
+          <h2>How to Use This Website</h2>
 
-
-      <!-- -----------------footer----------------- -->
-
-      <footer id="contact">
-        <div class="row">
-          <div class="col">
-            <p class="logo2">Travel Treasury</p>
-            <br />
-            <p>
-              Embark on your next adventure with confidence and financial clarity, At Travel Treasury,
-              we understand the importance of smart budgeting when it comes to travel. Whether you're planning a
-              weekend getaway or a globetrotting expedition, we're here to help you make the most of every penny
-              while exploring the world.
-            </p>
+          <div class="dropdown-container">
+            <button class="dropdown" onclick="toggleDropdown(1)">
+              Section 1: Getting Started
+              <img src="assests/images/arrow.png" alt="Arrow" class="arrow">
+            </button>
+            <div class="dropdown-content" id="dropdown1">
+              <p>Welcome to our website! To get started:</p>
+              <ul>
+                <li>Step 1: Lorem ipsum dolor sit amet.</li>
+                <li>Step 2: Consectetur adipiscing elit.</li>
+                <li>Step 3: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                <li>Step 4: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo
+                  consequat.</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="col">
-            <h3>
-              Address
-
-              <div class="underline"><span></span></div>
-            </h3>
-            <p>
-              Shri Guru Gobind Singhji institute of engineering and Technology,Vishnupuri, Nanded, Maharastra, India,431 606
-            </p>
-
-            <p class="email-id">Vaishnavi@gmail.com</p>
-            <h4>+91-1234567890</h4>
+          <div class="dropdown-container">
+            <button class="dropdown" onclick="toggleDropdown(2)">
+              Section 2: Features
+              <img src="assests/images/arrow.png" alt="Arrow" class="arrow">
+            </button>
+            <div class="dropdown-content" id="dropdown2">
+              <p>Discover the amazing features of our website:</p>
+              <ul>
+                <li>Feature 1: Lorem ipsum dolor sit amet.</li>
+                <li>Feature 2: Consectetur adipiscing elit.</li>
+                <li>Feature 3: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                <li>Feature 4: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo consequat.</li>
+                <li>Feature 5: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                  nulla
+                  pariatur.</li>
+              </ul>
+            </div>
           </div>
-          <div class="col">
-            <h3>
-              Links
-              <div class="underline"><span></span></div>
-            </h3>
 
-            <ul class="footer-nav">
-              <li><a href="home">Home</a></li>
-              <li><a href="budget">Budget</a></li>
-              <li><a href="class">Class</a></li>
-              <li><a href="contact">Contact</a></li>
-              <li><a href="about">About us</a></li>
-              <li></li>
-            </ul>
+          <div class="dropdown-container">
+            <button class="dropdown" onclick="toggleDropdown(3)">
+              Section 3: Account Settings
+              <img src="assests/images/arrow.png" alt="Arrow" class="arrow">
+            </button>
+            <div class="dropdown-content" id="dropdown3">
+              <p>Manage your account settings:</p>
+              <ul>
+                <li>Setting 1: Lorem ipsum dolor sit amet.</li>
+                <li>Setting 2: Consectetur adipiscing elit.</li>
+                <li>Setting 3: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+              </ul>
+            </div>
           </div>
-          <div class="col">
-            <h3>
-              Social
-              <div class="underline"><span></span></div>
-            </h3>
-            <div class="social-icons">
-              <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-              <a href="" target="_blank"><i class="fa-brands fa-github"></i></a>
-              <!-- <i class="fa-brands fa-pi"></i> -->
+
+          <div class="dropdown-container">
+            <button class="dropdown" onclick="toggleDropdown(4)">
+              Section 4: Troubleshooting
+              <img src="assests/images/arrow.png" alt="Arrow" class="arrow">
+            </button>
+            <div class="dropdown-content" id="dropdown4">
+              <p>Troubleshoot common issues:</p>
+              <ul>
+                <li>Issue 1: Lorem ipsum dolor sit amet.</li>
+                <li>Issue 2: Consectetur adipiscing elit.</li>
+                <li>Issue 3: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+              </ul>
             </div>
           </div>
         </div>
-      </footer>
 
 
 
+
+        <!-- -----------------footer----------------- -->
+
+        <footer id="contact">
+          <div class="row">
+            <div class="col">
+              <p class="logo2">Travel Treasury</p>
+              <br />
+              <p>
+                Embark on your next adventure with confidence and financial clarity, At Travel Treasury,
+                we understand the importance of smart budgeting when it comes to travel. Whether you're planning a
+                weekend getaway or a globetrotting expedition, we're here to help you make the most of every penny
+                while exploring the world.
+              </p>
+            </div>
+
+            <div class="col">
+              <h3>
+                Address
+
+                <div class="underline"><span></span></div>
+              </h3>
+              <p>
+                Shri Guru Gobind Singhji institute of engineering and Technology,Vishnupuri, Nanded, Maharastra,
+                India,431 606
+              </p>
+
+              <p class="email-id">Vaishnavi@gmail.com</p>
+              <h4>+91-1234567890</h4>
+            </div>
+            <div class="col">
+              <h3>
+                Links
+                <div class="underline"><span></span></div>
+              </h3>
+
+              <ul class="footer-nav">
+                <li><a href="home">Home</a></li>
+                <li><a href="budget">Budget</a></li>
+                <li><a href="class">Class</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="about">About us</a></li>
+                <li></li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>
+                Social
+                <div class="underline"><span></span></div>
+              </h3>
+              <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <!-- <i class="fa-brands fa-pi"></i> -->
+              </div>
+            </div>
+          </div>
+        </footer>
+
+
+
+      </div>
     </div>
-  </div>
-  <!-- --------------------------------------------------------HOME END------------------------------------------------------- -->
+    <!-- --------------------------------------------------------HOME END------------------------------------------------------- -->
 
-  <script src="assests/bootstrap-5.3.2-dist/js/home.js"></script>
-  <!-- <script src="assests/bootstrap-5.3.2-dist/js/script.js"></script>
+    <script src="assests/bootstrap-5.3.2-dist/js/home.js"></script>
+    <!-- <script src="assests/bootstrap-5.3.2-dist/js/script.js"></script>
   <script src="assests/bootstrap-5.3.2-dist/js/swiper-bundle.min.js"></script> -->
 
-  <script>
+    <script>
+      function toggleDropdown(id) {
+        var dropdownContent = document.getElementById("dropdown" + id);
+        var arrow = document.querySelector("#dropdown" + id + " .arrow");
 
-    function toggleLoginForm() {
-      // Navigate to another page
-      window.location.href = "login"; // Change "anotherpage.html" to the desired page URL
-    }
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+          arrow.classList.remove("rotate-arrow");
+        } else {
+          dropdownContent.style.display = "block";
+          arrow.classList.add("rotate-arrow");
+        }
+      }
+    </script>
 
-    function showSidebar() {
-      const sidebar = document.querySelector(".sidebar");
-      sidebar.style.display = 'flex';
-      showSidebar.scrollIntoView({ behavior: 'smooth' });
+    <script>
 
-    }
-    function hideSidebar() {
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = "none";
-      hideSidebar.scrollIntoView({ behavior: 'smooth' });
+      function toggleLoginForm() {
+        // Navigate to another page
+        window.location.href = "login"; // Change "anotherpage.html" to the desired page URL
+      }
 
-    }
-  </script>
+      function showSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.style.display = 'flex';
+        showSidebar.scrollIntoView({ behavior: 'smooth' });
+
+      }
+      function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = "none";
+        hideSidebar.scrollIntoView({ behavior: 'smooth' });
+
+      }
+    </script>
 </body>
 
 </html>

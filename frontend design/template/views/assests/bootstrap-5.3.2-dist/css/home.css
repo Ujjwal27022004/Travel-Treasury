@@ -170,6 +170,85 @@
 /* ------------------------------- */
 
 
+.navbar-icon{
+  height: 3vh;
+  padding: 1px;
+  margin-bottom:4px;
+}
+.nav-link{
+  font-size: 3vh;
+  font: bold;
+}
+.nav-item{
+  margin: 0;
+  padding-right: 15px;
+}
+.navbar-brand{
+  padding-right: 15px;
+}
+/* --------------------------------------how to use---------------------------------------------------------- */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dropdown-container {
+  margin-bottom: 10px;
+}
+
+.dropdown {
+  width: 100%;
+  padding: 15px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.dropdown img {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 95%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.dropdown-content {
+  display: none;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content p {
+  margin-bottom: 10px;
+}
+
+.dropdown-content ul {
+  margin-left: 20px;
+}
+
+.rotate-arrow {
+  transform: rotate(180deg);
+}
+
 
 
 /* -----------------------------------footer--------------------------------------------------------- */

@@ -7,6 +7,8 @@
     <title>Your Website</title>
 </head>
 <body>
+
+    <a href="/"><img id="home-button" src="assests/images/home.png" alt="No preview"></a>
         <div>
             <div class="text-content">
                 <p class="tag1">Travel Treasury</p>
@@ -24,7 +26,11 @@
     
                     <!-- Your sign-up form goes here -->
                     <form action="/userinfo" method="POST">
-                        <p class="tag">SIGN UP</p>
+                        <div class="tag">
+                        <h2 class="welcome">Welcome</h2>
+                        <p class="subtag">Start your Journey with us.</p>
+                        <p class="log">Sign Up</p>
+                    </div>
     
                         <div class="border">
                             <div class="mb-3">
@@ -36,7 +42,7 @@
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                                 <input type="email" name="Email" placeholder="Enter your email" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" required>
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                
                             </div>
     
                             <div class="mb-3">
@@ -51,6 +57,7 @@
     
                             <button type="submit" class="btn btn-primary">Sign Up</button>
                         </div>
+                        <p>Already have an account <a href="/login">Login Here</a></p>
                     </form>
                 </div>
             </div>

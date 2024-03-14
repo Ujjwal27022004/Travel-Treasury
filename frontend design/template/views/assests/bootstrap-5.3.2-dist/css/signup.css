@@ -80,19 +80,21 @@ button {
 }
 
 .image-container {
-  position: relative;
+  position: absolute;
   flex: 1;
   overflow: hidden;
+  
+  
 }
 
 .text-content {
   position: absolute;
   top: 40%;
-  left: 25%;
+  left: 0%;
   transform: translate(-50%, -50%);
-  text-align: center;
   width: 100%;
-  z-index: 1;
+  z-index: 1000;
+  text-align:left;
  
 }
 
@@ -102,12 +104,13 @@ button {
   letter-spacing: 1px;
   transition-duration: 3s;
   animation: slideleft 1.2s ease forwards;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-family: 'Graduate', serif;
   transition-duration: 3s;
   animation: slideleft 1.2s ease forwards;
   margin: 0;
   padding: 0;
+  z-index: 100;
 }
 
 .tag2 {
@@ -165,9 +168,16 @@ button {
       }
   }
   .tag{
-      text-align: center;
+      
       color: #016bd5;
       font-size: 5vh;
       margin:2.5vh;
   }
   
+  #home-button{
+    position: absolute;
+    z-index: 1000;
+    height: 7vh;
+    left: 2%;
+    top: 2%;
+}
