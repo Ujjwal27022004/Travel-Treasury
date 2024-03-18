@@ -262,4 +262,11 @@ button {
     color: #ec1c24;
   }
   
+  #home-button{
+    position: absolute;
+    z-index: 1000;
+    height: 7vh;
+    left: 2%;
+    top: 2%;
+}
   

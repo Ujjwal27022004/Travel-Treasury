@@ -36,49 +36,17 @@
 
 
         <script>
-
-            function renderBarGraph(expenseData) {
-                const labels = expenseData.map(entry => entry.name);
-                const amounts = expenseData.map(entry => entry.amount);
-
-                const ctx = document.getElementById('expenseChart').getContext('2d');
-                const myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Amount Spent',
-                            data: amounts,
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            }
-
-
             async function setGroupName() {
                 const groupNameInput = document.getElementById('groupName');
                 const groupName = groupNameInput.value;
 
                 if (groupName) {
-                    // Display group name in h1 tag
                     document.getElementById('groupTitle').textContent = `Welcome  ${groupName}`;
 
-                    // Hide group name input and show expense inputs
                     document.getElementById('hide').style.display = 'none';
                     document.getElementById('groupTitle').style.display = 'block'; // Display the updated group title
                     document.getElementById('expenseInputs').style.display = 'block';
 
-                    // Send group name to the server
                     await fetch('/set-group-name', {
                         method: 'POST',
                         headers: {
@@ -97,6 +65,13 @@
             function updateTotal(index) {
                 const amountInput = document.getElementById(`amount${index}`);
                 const totalCell = document.getElementById(`total${index}`);
+
+                const amount = parseFloat(amountInput.value) || 0;
+                totalCell.textContent = amount.toFixed(2);
+            }
+            function updateTotal2(index) {
+                const amountInput = document.getElementById(`amount2${index}`);
+                const totalCell = document.getElementById(`total2${index}`);
 
                 const amount = parseFloat(amountInput.value) || 0;
                 totalCell.textContent = amount.toFixed(2);
@@ -143,43 +118,31 @@
 
 
             function addAmount(index) {
-                // Get the amount input and total cell for the specified person
                 const amountInput = document.getElementById(`amount${index}`);
                 const totalCell = document.getElementById(`total${index}`);
 
-                // Get the current total for the specified person (or default to 0 if not a valid number)
                 const currentTotal = parseFloat(totalCell.textContent) || 0;
 
-                // Get the amount entered by the user (or default to 0 if not a valid number)
                 const amount = parseFloat(amountInput.value) || 0;
 
-                // Calculate the new total by adding the current total and the new amount
                 const newTotal = currentTotal + amount;
 
-                // Update the total cell for the specified person with the new total
                 totalCell.textContent = newTotal.toFixed(2);
 
-                // Set the amount input to zero for the specified person
                 amountInput.value = "0";
             }
             function addAmount2(index) {
-                // Get the amount input and total cell for the specified person
                 const amountInput = document.getElementById(`amount2${index}`);
                 const totalCell = document.getElementById(`total2${index}`);
 
-                // Get the current total for the specified person (or default to 0 if not a valid number)
                 const currentTotal = parseFloat(totalCell.textContent) || 0;
 
-                // Get the amount entered by the user (or default to 0 if not a valid number)
                 const amount = parseFloat(amountInput.value) || 0;
 
-                // Calculate the new total by adding the current total and the new amount
                 const newTotal = currentTotal + amount;
 
-                // Update the total cell for the specified person with the new total
                 totalCell.textContent = newTotal.toFixed(2);
 
-                // Set the amount input to zero for the specified person
                 amountInput.value = "0";
             }
 
@@ -193,26 +156,36 @@
 
                 document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
             }
+            function calculateGrandTotal2() {
+                const personCount = document.getElementById('personCount').value;
+                let grandTotal = 0;
+
+                for (let i = 1; i <= personCount; i++) {
+                    grandTotal += parseFloat(document.getElementById(`total2${i}`).textContent) || 0;
+                }
+
+                document.getElementById('grandTotal2').textContent = grandTotal.toFixed(2);
+            }
 
         </script>
 
-        <!-- Add this script tag in your HTML file -->
         <script>
+            const expenseData = [];
             async function saveExpenseToDatabase() {
                 const personCount = document.getElementById('personCount').value;
-                const expenseData = [];
+                
                 document.getElementById('expenseInputs').style.display = 'none';
                 const tableContainer2 = document.getElementById('tableContainer2');
 
-                // Create table
                 let tableHTML = '<table>';
                 tableHTML += '<tr><th>Name</th><th>Amount Spent</th><th>Total</th></tr>';
 
 
 
                 for (let i = 1; i <= personCount; i++) {
+                    const name = document.getElementById(`name${i}`).value;
                     tableHTML += `<tr>`;
-                    tableHTML += `<td><input type="text" id="name2${i}" placeholder="Person ${i}"></td>`;
+                    tableHTML += `<td><input type="text" id="name2${i}" value="${name}" ></td>`;
                     tableHTML += `<td><input type="number" id="amount2${i}" min="0" placeholder="0">
                     <button onclick="addAmount2(${i})"><i class="fa-solid fa-plus"></i></button></td>`;
                     tableHTML += `<td id="total2${i}">0</td>`;
@@ -220,12 +193,13 @@
                 }
 
                 tableHTML += `<tr><td colspan="3">
-            <button onclick="calculateGrandTotal2()">Total</button></td><td id="grandTotal">0</td></tr>`;
+            <button onclick="calculateGrandTotal2()">Total</button></td><td id="grandTotal2">0</td></tr>`;
+                tableHTML += `<tr><td colspan="3">
+            <button onclick="SubmitData()">Submit</button></td></tr>`;
                 tableHTML += '</table>';
 
                 tableContainer2.innerHTML = tableHTML;
 
-                // Attach event listeners
                 for (let i = 1; i <= personCount; i++) {
                     const amountInput = document.getElementById(`amount2${i}`);
                     amountInput.addEventListener('input', () => updateTotal(i));
@@ -234,8 +208,8 @@
                 //
 
                 for (let i = 1; i <= personCount; i++) {
-                    const name = document.getElementById(`name2${i}`).value;
-                    const amount = document.getElementById(`amount2${i}`).value;
+                    const name = document.getElementById(`name${i}`).value;
+                    const amount = document.getElementById(`amount${i}`).value;
                     if (name && amount && !isNaN(amount)) {
                         expenseData.push({ name, amount });
                     }
@@ -244,7 +218,6 @@
 
 
                     if (name && amount && !isNaN(amount)) {
-                        // Send data to the server
                         await fetch('/save-expense', {
                             method: 'POST',
                             headers: {
@@ -254,12 +227,38 @@
                             body: JSON.stringify({ name, amount })
                         });
                     }
-                    renderBarGraph(expenseData);
                 }
-                renderBarGraph(expenseData);
 
                 alert('Data saved to the database!');
             }
+
+
+            async function SubmitData() {
+                const personCount = document.getElementById('personCount').value;
+              
+
+                // Retrieve data from Table 2
+                for (let i = 1; i <= personCount; i++) {
+                    const name = document.getElementById(`name2${i}`).value;
+                    const amount = document.getElementById(`amount2${i}`).value;
+                    if (name && amount && !isNaN(amount)) {
+                        expenseData.push({ name, amount });
+                    }
+
+                    // Send data to the server
+                    if (name && amount && !isNaN(amount)) {
+                        await fetch('/save-expense', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ name, amount })
+                        });
+                    }
+                }
+                alert('Data saved to the database!');
+            }
+
         </script>
     </div>
 </body>
