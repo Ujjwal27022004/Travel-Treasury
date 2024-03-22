@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Enter Group Name</title>
 </head>
 <body>
-    <div>
-        <p>Enter name of your group</p><br>
-        <input type="text" placeholder="Group Name">
-    </div>
+    <form action="/group-data" method="POST">
+        <label for="groupName">Enter Group Name:</label>
+        <input type="text" id="groupName" name="groupName">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Data</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>Your Group Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each individualTotals}}
+            <tr>
+                <td><a href="#" class="person-name">{{this.name}}</a></td>
+                <td>{{this.total}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div id="person-history" style="display:none;">
+        <h2 id="person-name"></h2>
+        <ul id="person-expenses"></ul>
+    </div>
+
+    <canvas id="myChart" width="700px" height="350px"></canvas>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>avg</th>
+                <th>amount +/-</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each individualTotals}}
+            <tr>
+                <td><a href="#" class="person-name">{{this.name}}</a></td>
+                <td>{{this.total}}</td>
+                <td>{{this.equalShare}}</td>
+                <td>{{this.difference}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+<table>
+    <tbody>
+    {{#each individualTotals}}
+    {{!-- <tr>
+        <td><a href="#" class="person-name">{{this.name}}</a></td>
+        <td>{{this.total}}</td>
+        <td>{{this.equalShare}}</td>
+        <td>{{this.difference}}</td>
+    </tr> --}}
+    <tr>
+        <td colspan="4">
+            {{!-- <h4>Transactions:</h4> --}}
+            <ul>
+                {{#each this.transactions}}
+                <li>{{this.from}} pays {{this.to}} {{this.actualValue}}</li>
+                {{/each}}
+            </ul>
+        </td>
+    </tr>
+    {{/each}}
+</tbody>
+
+</table>
+
+
+
+
+    <script>
+        const individualTotals = {{{ individualTotals2 }}};
+
+        const names = individualTotals.map(item => item.name);
+        const totals = individualTotals.map(item => item.total);
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: names,
+                datasets: [{
+                    label: 'Total',
+                    data: totals,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false, // Prevent the chart from resizing
+                maintainAspectRatio: false, // Allow the chart to have a custom aspect ratio
+                scales: {
+                    y: {
+                        beginAtZero: true // Ensure the y-axis starts from zero
+                    }
+                }
+            }
+        });
+
+        // Add event listener to person names
+
+    </script>
+</body>
+
+</html>

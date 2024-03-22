@@ -113,6 +113,9 @@ app.post("/contactinfo",async (req,res)=>{
 })
 // .........................................contact userdata....................................................
 
+
+
+
 let currentGroupName = "";
 let Expense; // Dynamic model for the current group name
 
@@ -214,14 +217,95 @@ app.post('/updateCollection', async (req, res) => {
   
 
 // ------------------------------------------budget page---------------------------------------------------------
+// Add a new route to render the page with input for the group name
+app.get('/class', (req, res) => {
+    res.render('class');
+});
+
+// Handle the form submission from the group name input page
+app.post('/group-data', async (req, res) => {
+    try {
+        const groupName = req.body.groupName;
+        const Expense = getExpenseModel(groupName);
+
+        if (!Expense) {
+            return res.status(404).json({ error: 'Expense model not found for group' });
+        }
+
+        // Fetch individual totals
+        const aggregateResult = await Expense.aggregate([
+            { $group: { _id: '$name', totalAmount: { $sum: '$amount' } } }
+        ]);
+
+        // Construct an array to store each person's name, total, equal share, difference, and transactions
+        const individualTotals = aggregateResult.map((result) => ({
+            name: result._id,
+            total: result.totalAmount,
+            equalShare: 0, // Placeholder for equal share
+            difference: 0, // Placeholder for difference
+            transactions: [] // Placeholder for transactions
+        }));
+
+        // Calculate total amount spent in the trip
+        const totalTripExpense = individualTotals.reduce((acc, person) => acc + person.total, 0);
+
+        // Determine the number of members involved in the trip
+        const numMembers = individualTotals.length;
+
+        // Calculate equal share per person
+        const equalSharePerPerson = totalTripExpense / numMembers;
+
+        // Calculate difference for each person and generate transactions
+        individualTotals.forEach(person => {
+            person.equalShare = equalSharePerPerson;
+            person.difference = person.total - equalSharePerPerson;
+
+            // Generate transactions
+            individualTotals.forEach(otherPerson => {
+                if (person.name !== otherPerson.name) {
+                    if (person.difference < 0 && otherPerson.difference > 0) {
+                        const amountToTransfer = Math.min(Math.abs(person.difference), otherPerson.difference);
+                        person.transactions.push({
+                            from: otherPerson.name,
+                            to: person.name,
+                            amount: amountToTransfer
+                        });
+                        otherPerson.difference -= amountToTransfer;
+                        person.difference += amountToTransfer;
+                    }
+                }
+            });
+        });
+
+        const individualTotals2 = JSON.stringify(individualTotals);
+        
+        // Render the groupdata view and pass the aggregated data
+        res.render('group_data', { individualTotals2, individualTotals });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+        // res.render('group_data', { expenses });
+
+        
+
+
+        
+        
+        
+    
+
+
+
+//----------------------------------------class page-----------------------------------------------------------
 app.get("*",(req,res)=>{
     res.render("404")
 })
 //----------------------------------------ERROR page-----------------------------------------------------------
-app.get("/class",(req,res)=>{
-    res.render("class")
-})
-//----------------------------------------class page-----------------------------------------------------------
+
 
 
 app.listen(3000,()=>{
