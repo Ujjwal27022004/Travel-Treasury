@@ -184,11 +184,12 @@
 
                 for (let i = 1; i <= personCount; i++) {
                     const name = document.getElementById(`name${i}`).value;
+                    const amount = parseFloat(document.getElementById(`amount${i}`).value);
                     tableHTML += `<tr>`;
                     tableHTML += `<td><input type="text" id="name2${i}" value="${name}" ></td>`;
                     tableHTML += `<td><input type="number" id="amount2${i}" min="0" placeholder="0">
                     <button onclick="addAmount2(${i})"><i class="fa-solid fa-plus"></i></button></td>`;
-                    tableHTML += `<td id="total2${i}">0</td>`;
+                    tableHTML += `<td id="total2${i}">${amount}</td>`;
                     tableHTML += `</tr>`;
                 }
 

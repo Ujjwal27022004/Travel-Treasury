@@ -151,6 +151,7 @@ app.post('/set-group-name', (req, res) => {
 
 app.post('/save-expense', async (req, res) => {
     const { name, amount } = req.body;
+    console.log(name,amount)
 
     if (!name || !amount || isNaN(amount)) {
         return res.status(400).json({ error: 'Invalid data' });
@@ -204,6 +205,7 @@ app.post('/updateCollection', async (req, res) => {
     res.status(500).send('Error updating collection');
   }
 });
+
 
 
 
