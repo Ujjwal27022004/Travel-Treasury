@@ -9,25 +9,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital@1&display=swap" rel="stylesheet">
+
     <title>Expense Tracker</title>
 </head>
 
 <body>
 
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
     <div id="app">
         <h1 id="groupTitle">Expense Tracker</h1>
         <div id="hide">
-            <label for="groupName">Enter Group Name:</label>
+            <label id="entername" for="groupName">Enter Group Name:</label>
             <input type="text" id="groupName">
-            <button onclick="setGroupName()">Set Group Name</button>
+            <button id="setname" onclick="setGroupName()">Set Group Name</button>
         </div>
 
         <div id="expenseInputs" style="display:none;">
-            <label for="personCount">Enter the count of persons:</label>
-            <input type="number" id="personCount" min="1">
 
-            <button onclick="Names()">Generate Table</button>
+            <div id="partition1">
+                <label id="entercount" for="personCount">Enter the count of persons:</label>
+                <input type="number" id="personCount" min="1">
 
+                <button id="generatetable" onclick="Names()">Generate Table</button>
+            </div>
             <div id="tableContainer"></div>
             <button onclick="saveExpenseToDatabase()">Done</button>
         </div>
@@ -95,8 +116,8 @@
 
                 for (let i = 1; i <= personCount; i++) {
                     tableHTML += `<tr>`;
-                    tableHTML += `<td><input type="text" id="name${i}" placeholder="Person ${i}"></td>`;
-                    tableHTML += `<td><input type="number" id="amount${i}" min="0" placeholder="0">
+                    tableHTML += `<td><input class="inputitem" type="text" id="name${i}" placeholder="Person ${i}"></td>`;
+                    tableHTML += `<td><input class="inputitem" type="number" id="amount${i}" min="0" placeholder="0">
                     <button onclick="addAmount(${i})"><i class="fa-solid fa-plus"></i></button></td>`;
                     tableHTML += `<td id="total${i}">0</td>`;
                     tableHTML += `</tr>`;
@@ -143,7 +164,7 @@
 
                 totalCell.textContent = newTotal.toFixed(2);
 
-                amountInput.value = "0";
+
             }
 
             function calculateGrandTotal() {
@@ -173,7 +194,7 @@
             const expenseData = [];
             async function saveExpenseToDatabase() {
                 const personCount = document.getElementById('personCount').value;
-                
+
                 document.getElementById('expenseInputs').style.display = 'none';
                 const tableContainer2 = document.getElementById('tableContainer2');
 
@@ -213,20 +234,21 @@
                     const amount = document.getElementById(`amount${i}`).value;
                     if (name && amount && !isNaN(amount)) {
                         expenseData.push({ name, amount });
-                    }
 
 
 
 
-                    if (name && amount && !isNaN(amount)) {
-                        await fetch('/save-expense', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
 
-                            body: JSON.stringify({ name, amount })
-                        });
+                        if (name && amount && !isNaN(amount)) {
+                            await fetch('/save-expense', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+
+                                body: JSON.stringify({ name, amount })
+                            });
+                        }
                     }
                 }
 
@@ -236,7 +258,7 @@
 
             async function SubmitData() {
                 const personCount = document.getElementById('personCount').value;
-              
+
 
                 // Retrieve data from Table 2
                 for (let i = 1; i <= personCount; i++) {

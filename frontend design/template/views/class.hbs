@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Detail</title>
     <link rel="stylesheet" href="assests/bootstrap-5.3.2-dist/css/class.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital@1&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <form action="/group-data" method="POST">
-        <label for="groupName">Enter Group Name:</label>
-        <input type="text" id="groupName" name="groupName">
-        <button type="submit">Submit</button>
-    </form>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div id="app">
+        <h1 id="groupTitle">Expense Tracker</h1>
+
+        <form action="/group-data" method="POST">
+            <label for="groupName">Enter Group Name:</label>
+            <input type="text" id="groupName" name="groupName">
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
 </body>
+
 </html>

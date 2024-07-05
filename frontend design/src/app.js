@@ -6,110 +6,109 @@ require("./db/db.js")
 const bodyParser = require('body-parser');
 
 // const ejs = require ('ejs')
-const hbs = require ('hbs')
+const hbs = require('hbs')
 const path = require('path')
 
 const userdata = require("./model/model.js")
 const contactdata = require("./model/model2.js")
 // const Expense = require("./model/model3.js")
 
-const template_path = path.join(__dirname,"../template/views")
+const template_path = path.join(__dirname, "../template/views")
 
 app.use(bodyParser.json()); // Parse JSON data
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded data
-app.use(express.static(path.join(__dirname,"../template/views")));//for css file
+app.use(express.static(path.join(__dirname, "../template/views")));//for css file
 
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
 
 // app.set('view engine','ejs')
-app.set('view engine','hbs')
-app.set('views',template_path)
+app.set('view engine', 'hbs')
+app.set('views', template_path)
 
 
 // app.get("",(req,res)=>{
 //     res.send("Hello world")
 // })
 
-app.get("",(req,res)=>{
+app.get("", (req, res) => {
     res.render("home.hbs")
 })
 // ------------------------------------------Home------------------------------
-app.get("/login",(req,res)=>{
+app.get("/login", (req, res) => {
     res.render("login")
 })
 
-app.post("/loginpage",async (req,res)=>{
+app.post("/loginpage", async (req, res) => {
     try {
-     const email = req.body.email
-     const password = req.body.passwordnodemn
- 
-     const getemail = await userdata.findOne({email:email})
-     // console.log(getemail)
-     // res.send(getemail)
- 
-     if(getemail.password === password)
-     {
-         res.render("home")
-     }
-     else{
-         res.send("Password is incorrect")
-     }
+        const email = req.body.email
+        const password = req.body.passwordnodemn
+
+        const getemail = await userdata.findOne({ email: email })
+        // console.log(getemail)
+        // res.send(getemail)
+
+        if (getemail.password === password) {
+            res.render("home")
+        }
+        else {
+            res.send("Password is incorrect")
+        }
     } catch (error) {
-     res.send(error)
+        res.send(error)
     }
- })
+})
 // -----------------------------------------login------------------------------
-app.get("/signup",(req,res)=>{
+app.get("/signup", (req, res) => {
     res.render("signup")
 })
 
-app.post("/userinfo",async (req,res)=>{
+app.post("/userinfo", async (req, res) => {
     try {
         const password = req.body.password
         const cpassword = req.body.cpassword
-        
-    if(password===cpassword){
-        const userinfo = new userdata({
-            name : req.body.name,
-            Email : req.body.Email,
-            password : req.body.password,
-            cpassword:req.body.cpassword,
 
-            
-        },
-        
-        )
-        
-        
-        const postData = await userinfo.save()
-        res.send(postData)
-        
+        if (password === cpassword) {
+            const userinfo = new userdata({
+                name: req.body.name,
+                Email: req.body.Email,
+                password: req.body.password,
+                cpassword: req.body.cpassword,
+
+
+            },
+
+            )
+
+
+            const postData = await userinfo.save()
+            res.send(postData)
+
+        }
+        else {
+            res.send("password are not matching")
+        }
+    } catch (error) {
+        res.send(error)
     }
-    else{
-        res.send("password are not matching")
-    }
-} catch (error) {
-    res.send(error)
-}
 })
 // ----------------------------------------signup-----------------------------------------
 
-app.get("/contact",(req,res)=>{
+app.get("/contact", (req, res) => {
     res.render("contact_us")
 })
 
 
-app.post("/contactinfo",async (req,res)=>{
+app.post("/contactinfo", async (req, res) => {
     const contactinfo = new contactdata({
-        name : req.body.name,
-        email : req.body.email,
-        phoneno : req.body.phoneno,
-        message : req.body.message
+        name: req.body.name,
+        email: req.body.email,
+        phoneno: req.body.phoneno,
+        message: req.body.message
     })
 
     const postcontactData = await contactinfo.save()
     console.log("Contact data saved:", postcontactData);
-        res.send(postcontactData)
+    res.send(postcontactData)
 })
 // .........................................contact userdata....................................................
 
@@ -151,7 +150,7 @@ app.post('/set-group-name', (req, res) => {
 
 app.post('/save-expense', async (req, res) => {
     const { name, amount } = req.body;
-    console.log(name,amount)
+    console.log(name, amount)
 
     if (!name || !amount || isNaN(amount)) {
         return res.status(400).json({ error: 'Invalid data' });
@@ -188,41 +187,46 @@ app.get('/get-expense-data', async (req, res) => {
 
 
 app.post('/updateCollection', async (req, res) => {
-  try {
-    const { group,data } = req.body;
+    try {
+        const { group, data } = req.body;
 
-    // Assuming each item in 'data' contains name and totalSpent
-    for (let i = 0; i < data.length; i++) {
-      const { name, totalSpent } = data[i];
-      
-      // Find the document in the collection and update the totalSpent field
-      await Expense.findOneAndUpdate({ name }, { totalSpent });
+        // Assuming each item in 'data' contains name and totalSpent
+        for (let i = 0; i < data.length; i++) {
+            const { name, totalSpent } = data[i];
+
+            // Find the document in the collection and update the totalSpent field
+            await Expense.findOneAndUpdate({ name }, { totalSpent });
+        }
+
+        res.send('Collection updated successfully');
+    } catch (error) {
+        console.error('Error updating collection:', error);
+        res.status(500).send('Error updating collection');
     }
-
-    res.send('Collection updated successfully');
-  } catch (error) {
-    console.error('Error updating collection:', error);
-    res.status(500).send('Error updating collection');
-  }
 });
 
 
 
 
-  
-
- 
 
 
-  
 
-  
+
+
+
+
+
 
 // ------------------------------------------budget page---------------------------------------------------------
 // Add a new route to render the page with input for the group name
 app.get('/class', (req, res) => {
     res.render('class');
 });
+
+// Handle the form submission from the group name input page
+
+
+
 
 // Handle the form submission from the group name input page
 app.post('/group-data', async (req, res) => {
@@ -245,6 +249,8 @@ app.post('/group-data', async (req, res) => {
             total: result.totalAmount,
             equalShare: 0, // Placeholder for equal share
             difference: 0, // Placeholder for difference
+            diffrence2: 0,
+            amountToTransfer: 0,
             transactions: [] // Placeholder for transactions
         }));
 
@@ -257,31 +263,41 @@ app.post('/group-data', async (req, res) => {
         // Calculate equal share per person
         const equalSharePerPerson = totalTripExpense / numMembers;
 
-        // Calculate difference for each person and generate transactions
+        // Calculate difference for each person
         individualTotals.forEach(person => {
             person.equalShare = equalSharePerPerson;
             person.difference = person.total - equalSharePerPerson;
+            person.difference2 = person.total - equalSharePerPerson;
+            console.log(`Person: ${person.name}, Total: ${person.total}, Equal Share: ${equalSharePerPerson}, Difference: ${person.difference}`);
+        });
 
-            // Generate transactions
-            individualTotals.forEach(otherPerson => {
-                if (person.name !== otherPerson.name) {
-                    if (person.difference < 0 && otherPerson.difference > 0) {
-                        const amountToTransfer = Math.min(Math.abs(person.difference), otherPerson.difference);
-                        person.transactions.push({
-                            from: otherPerson.name,
-                            to: person.name,
-                            amount: amountToTransfer
-                        });
-                        otherPerson.difference -= amountToTransfer;
-                        person.difference += amountToTransfer;
-                    }
+        // Generate transactions
+        const debtors = individualTotals.filter(person => person.difference < 0);
+        const creditors = individualTotals.filter(person => person.difference > 0);
+
+        debtors.forEach(debtor => {
+            creditors.forEach(creditor => {
+                if (debtor.difference < 0 && creditor.difference > 0) {
+                    const amountToTransfer = Math.min(Math.abs(debtor.difference), creditor.difference);
+                    debtor.transactions.push({
+                        from: creditor.name,
+                        to: debtor.name,
+                        amount: amountToTransfer
+                    });
+                    creditor.difference -= amountToTransfer;
+                    debtor.difference += amountToTransfer;
+                    debtor.amountToTransfer += amountToTransfer;
+
+
+                    console.log(`Amount to transfer from ${creditor.name} to ${debtor.name}: ${debtor.amountToTransfer}`);
+
                 }
             });
         });
 
         const individualTotals2 = JSON.stringify(individualTotals);
-        
-        // Render the groupdata view and pass the aggregated data
+
+        // Render the group_data view and pass the aggregated data
         res.render('group_data', { individualTotals2, individualTotals });
     } catch (error) {
         console.error(error);
@@ -290,26 +306,27 @@ app.post('/group-data', async (req, res) => {
 });
 
 
-        // res.render('group_data', { expenses });
-
-        
 
 
-        
-        
-        
-    
+// res.render('group_data', { expenses });
+
+
+
+
+
+
+
 
 
 
 //----------------------------------------class page-----------------------------------------------------------
-app.get("*",(req,res)=>{
+app.get("*", (req, res) => {
     res.render("404")
 })
 //----------------------------------------ERROR page-----------------------------------------------------------
 
 
 
-app.listen(3000,()=>{
+app.listen(3000, () => {
     console.log(`listening to port 3000`)
 })
